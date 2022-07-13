@@ -1,0 +1,69 @@
+﻿@model EmailMessage
+@{
+    ViewData["Title"] = "Send";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <label asp-for="@Model.To">Kimə</label>
+    <input style="color:honeydew" asp-for="@Model.To" class="form-control">
+    <span class="text-danger" asp-validation-for="@Model.To"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="@Model.Subject">Başlıq</label>
+    <input style="color:honeydew" asp-for="@Model.Subject" class="form-control">
+    <span class="text-danger" asp-validation-for="@Model.Subject"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="@Model.Body">Mövzu</label>
+    <input style="color:honeydew" asp-for="@Model.Body" class="form-control">
+    <span class="text-danger" asp-validation-for="@Model.Body"></span>
+  </div>
+  <button type="submit" class="btn btn-success">Göndər</button>
+  <a asp-action="Index" class="btn btn-primary">Geri</a>
+</form>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+    @*@model Mail
+@{
+    ViewData["Title"] = "SendMail";
+}
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <form>
+
+                        <div class="form-Room">
+                            <label asp-for="@Model.Head">Başlıq</label>
+                            <input asp-for="@Model.Head" class="form-control" placeholder="Başlıq">
+                            <span class="text-danger" asp-validation-for="@Model.Head"></span>
+                        </div>
+                        <div class="form-Room">
+                            <label asp-for="@Model.Body">Mövzu</label>
+                            <input asp-for="@Model.Body" class="form-control" placeholder="Mövzu">
+                            <span class="text-danger" asp-validation-for="@Model.Body"></span>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-success">Göndər</button>
+                            <a asp-action="Index" class="btn btn-primary">Geri qayıt</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>*@
+

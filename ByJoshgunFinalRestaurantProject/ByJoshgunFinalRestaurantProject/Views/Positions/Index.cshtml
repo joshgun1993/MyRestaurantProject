@@ -1,0 +1,136 @@
+﻿@model List<Position>
+@{
+    ViewData["Title"] = "Vəzifələr";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Vəzifələr</h4>
+                    <a asp-controller="Positions" asp-action="CreatePosition" class="btn btn-outline-primary" style="margin-right:10px; color:white !important">Vəzifə Yarat</a>
+                </div>
+
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th style="color:orange !important"> Vəzifə Adı </th>
+                            <th style="color:orange !important"> Status </th>
+                            <th style="color:orange !important"> Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Position position in Model)
+                        {
+                            <tr>
+                                <td style="color:white !important"> @position.PositionName </td>
+                                <td style="color:white !important">
+
+                                    @if (!position.IsDeactive)
+                                    {
+                                        <span class="text-success">Aktiv</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger">Deaktiv</span>
+                                    }
+                                </td>
+
+                                <td style="color:white !important">
+
+                                    <a asp-controller="Positions" asp-action="UpdatePosition" asp-route-positionId="@position.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Vəzifəni Yenilə</a>
+
+                                    @if (!position.IsDeactive)
+                                    {
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-danger" style="color:white !important" data-toggle="modal" data-target="#position-@position.Id">
+                                            Deaktiv Et
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="position-@position.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3>Deaktiv etmək istədiyinizə əminsiniz?</h3>
+                                                        <a asp-controller="Positions" asp-action="ActivityPosition" asp-route-activityPositionId="@position.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Bəli</a>
+                                                        <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-success" style="color:white !important" data-toggle="modal" data-target="#position-@position.Id">
+                                            Aktiv Et
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="position-@position.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3> Aktiv etmək istədiyinizə əminsiniz?</h3>
+                                                        <a asp-controller="Positions" asp-action="ActivityPosition" asp-route-activityPositionId="@position.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Bəli</a>
+                                                        <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th style="color:orange !important"> Vəzifə Adı </th>
+                            <th style="color:orange !important"> Status </th>
+                            <th style="color:orange !important"> Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#MyDataTable').DataTable();
+        });
+    </script>
+}*@
+
+    @*@section css{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+}*@

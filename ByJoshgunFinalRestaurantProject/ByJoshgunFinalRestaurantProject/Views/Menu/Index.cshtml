@@ -1,0 +1,211 @@
+﻿@model List<Menu>
+@{
+    ViewData["Title"] = "Menyu";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-end align-items-center">
+                    <a asp-controller="Menu" asp-action="CreateKitchen" class="btn btn-outline-primary" style="margin-right:10px; color:white !important">Menyu Yarat</a>
+                </div>
+
+                @foreach (Menu menu in Model)
+                {
+                    <div class="container" style="margin-top: 20px;">
+                        <h4 class="card-title" data-id="menuId-@menu.Id">@menu.Name</h4>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <table class="table table-hover table-dark" style="color:white !important">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @if (!menu.IsDeactive)
+                                            {
+                                                <span class="text-success">Aktiv</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Deaktiv</span>
+                                            }
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <a asp-controller="Menu" asp-action="CreateFood" asp-route-menuId="@menu.Id" class="btn btn-outline-primary" style="margin-right:10px; color:white !important">Əlavə Et</a>
+                            <a asp-controller="Menu" asp-action="UpdateMenuKitchen" asp-route-menuId="@menu.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Menyu Yenilə</a>
+
+                            @if (!menu.IsDeactive)
+                            {
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-toggle="modal" data-target="#menu-@menu.Id">
+                                    Deaktiv Et
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="menu-@menu.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3> Deaktiv etmək istədiyinizə əminsiniz?</h3>
+                                                <a asp-controller="Menu" asp-action="ActivityMenuKitchen" asp-route-menuId="@menu.Id" class="btn btn-outline-success" style="color:white !important">Bəli</a>
+                                                <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-outline-success" style="color:white !important" data-toggle="modal" data-target="#menu-@menu.Id">
+                                    Aktiv Et
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="menu-@menu.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3> Aktiv etmək istədiyinizə əminsiniz?</h3>
+                                                <a asp-controller="Menu" asp-action="ActivityMenuKitchen" asp-route-menuId="@menu.Id" class="btn btn-outline-success" style="color:white !important">Bəli</a>
+                                                <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <table class="table table-hover table-dark" style="color:white !important">
+                            <thead>
+                                <tr>
+                                    <th style="color:orange !important"> Adı </th>
+                                    <th style="color:orange !important"> İçindəkilər</th>
+                                    <th style="color:orange !important"> Qiyməti </th>
+                                    <th style="color:orange !important"> Status </th>
+                                    <th style="color:orange !important"> Əməliyyatlar </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (Food food in menu.Foods)
+                                {
+                                    <tr>
+                                        <td style="color:white !important"> @food.Name </td>
+                                        <td style="color:white !important"> @food.Ingredient </td>
+                                        <td style="color:white !important"> ₼ @food.Price </td>
+                                        <td>
+                                            @if (!food.IsDeactive)
+                                            {
+                                                <span class="text-success">Aktiv</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">Deaktiv</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Menu" asp-action="UpdateFood" asp-route-foodId="@food.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Yenilə</a>
+
+                                            @if (!food.IsDeactive)
+                                            {
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-outline-danger" style="color:white !important" data-toggle="modal" data-target="#food-@food.Id">
+                                                    Deaktiv Et
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="food-@food.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h3> Deaktiv etmək istədiyinizə əminsiniz?</h3>
+                                                                <a asp-controller="Menu" asp-action="ActivityFood" asp-route-foodId="@food.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Bəli</a>
+                                                                <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            }
+                                            else
+                                            {
+
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-outline-success" style="color:white !important" data-toggle="modal" data-target="#food-@food.Id">
+                                                    Aktiv Et
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="food-@food.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h3> Aktiv etmək istədiyinizə əminsiniz?</h3>
+                                                                <a asp-controller="Menu" asp-action="ActivityFood" asp-route-foodId="@food.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Bəli</a>
+                                                                <button type="button" class="btn btn-outline-danger" style="margin-right:10px; color:white !important" data-dismiss="modal">Xeyr</button>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th style="color:orange !important"> Adı </th>
+                                    <th style="color:orange !important"> İçindəkilər</th>
+                                    <th style="color:orange !important"> Qiyməti </th>
+                                    <th style="color:orange !important"> Status </th>
+                                    <th style="color:orange !important"> Əməliyyatlar </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+ @*<th style="color:orange !important" data-id="menuId-@food.MenuId"> Adı </th>*@

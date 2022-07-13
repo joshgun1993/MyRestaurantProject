@@ -1,0 +1,58 @@
+﻿@model List<Expenditure>
+@{
+    ViewData["Title"] = "Xərclər";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Xərclər</h4>
+                    <a asp-controller="Expenditures" asp-action="CreateExpenditure" class="btn btn-outline-primary" style="margin-right:10px; color:white !important">Yarat</a>
+                </div>
+
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th style="color:orange !important"> Xərc </th>
+                            <th style="color:orange !important"> Xərc Haqqında </th>
+                            <th style="color:orange !important"> Xərcin Vaxtı </th>
+                            <th style="color:orange !important"> Qeyd Edən Şəxs </th>
+                            <th style="color:orange !important"> Əməliyyatlar </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Expenditure expenditure in Model)
+                        {
+                            <tr>
+                                <td style="color:white !important"> ₼ @expenditure.Price </td>
+                                <td style="color:white !important"> @expenditure.AboutPrice </td>
+                                <td style="color:white !important"> @expenditure.ExpenditureTime </td>
+                                <td style="color:white !important"> @expenditure.AppUser.Name  @expenditure.AppUser.Surname </td>
+                                <td style="color:white !important">
+                                    <a asp-controller="Expenditures" asp-action="UpdateExpenditure" asp-route-expenditureId="@expenditure.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Xərc Yenilə</a>
+                                    <a asp-controller="Expenditures" asp-action="DetailExpenditure" asp-route-expenditureId="@expenditure.Id" class="btn btn-outline-dribbble" style="margin-right:10px; color:white !important">Xərc Təfərrüatı</a>
+
+                                </td>
+                            </tr>
+                        }
+                    <tbody>
+                        <tfoot>
+                        <tr>
+                            <th style="color:orange !important"> Xərc </th>
+                            <th style="color:orange !important"> Xərc Haqqında </th>
+                            <th style="color:orange !important"> Xərcin Vaxtı </th>
+                            <th style="color:orange !important"> Qeyd Edən Şəxs </th>
+                            <th style="color:orange !important"> Əməliyyatlar </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

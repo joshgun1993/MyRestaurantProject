@@ -1,0 +1,19 @@
+﻿@model Menu
+@{
+    ViewData["Title"] = "Mətbəx Yenilə";
+}
+
+<form method="post">
+  <div class="form-group">
+    <label asp-for="@Model.Name">Ad</label>
+    <input style="color:honeydew" asp-for="@Model.Name" class="form-control">
+    <span class="text-danger" asp-validation-for="@Model.Name"></span>
+  </div>
+  <button type="submit" class="btn btn-outline-success">Yenilə</button>
+  <a asp-action="Index" class="btn btn-outline-primary">Geri</a>
+</form>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,28 @@
+﻿@model EmailMessage
+@{
+    ViewData["Title"] = "Mail Göndər";
+}
+
+<form method="post">
+  <div class="form-group">
+    <label asp-for="@Model.To" for="exampleFormControlInput1">Email address</label>
+    <input asp-for="@Model.To" style="color:honeydew" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <span class="text-danger" asp-validation-for="@Model.To"></span> 
+</div>
+  <div class="form-group">
+    <label asp-for="@Model.Subject" for="exampleFormControlTextarea1">Başlıq</label>
+    <textarea asp-for="@Model.Subject" style="color:honeydew" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <span class="text-danger" asp-validation-for="@Model.Subject"></span> 
+</div>
+  <div class="form-group">
+    <label asp-for="@Model.Body" for="exampleFormControlTextarea1">Mövzu</label>
+    <textarea asp-for="@Model.Body" style="color:honeydew" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <span class="text-danger" asp-validation-for="@Model.Body"></span>
+</div>
+  <button type="submit" class="btn btn-primary">Göndər</button>
+</form>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

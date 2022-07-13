@@ -1,0 +1,35 @@
+﻿@model UpdateUserVM
+@{
+    ViewData["Title"] = "Yenilə";
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Name">Ad</label>
+        <input style="color:honeydew" asp-for="@Model.Name" class="form-control">
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Surname">Soyad</label>
+        <input style="color:honeydew" asp-for="@Model.Surname" class="form-control">
+        <span class="text-danger" asp-validation-for="@Model.Surname"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Username">Istifadəçi Adı</label>
+        <input style="color:honeydew" asp-for="@Model.Username" class="form-control">
+        <span class="text-danger" asp-validation-for="@Model.Username"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Email">Email</label>
+        <input style="color:honeydew" asp-for="@Model.Email" class="form-control">
+        <span class="text-danger" asp-validation-for="@Model.Email"></span>
+    </div>
+    <button type="submit" class="btn btn-outline-success">Yenilə</button>
+    <a asp-action="Index" class="btn btn-outline-primary">Geri</a>
+</form>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

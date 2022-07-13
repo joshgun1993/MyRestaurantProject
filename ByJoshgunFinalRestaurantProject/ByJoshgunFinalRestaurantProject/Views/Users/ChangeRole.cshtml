@@ -1,0 +1,31 @@
+﻿@model ChangeRoleVM
+@{
+    ViewData["Title"] = "Create";
+}
+<div asp-validation-summary="ModelOnly" class = "text-danger"></div>
+<form method="post" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label>Role Seç</label>
+        <select class="form-control" name="newRole">
+            @foreach (IdentityRole role in ViewBag.Roles)
+            {
+                if (role.Name == Model.OldRole)
+                {
+                    <option selected value="@role.Name" style="color:honeydew">@role.Name</option>
+                }
+                else
+                {
+                    <option style="color:honeydew" value="@role.Name">@role.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Yarat</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>
+
+@section Scripts{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}
