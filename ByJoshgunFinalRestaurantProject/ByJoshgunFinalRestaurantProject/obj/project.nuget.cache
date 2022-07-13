@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9vwLZtR+7if8peba7OAGdhYeEYScGCwWzCn77jxRZwi/hbHRZ1vgxOyt+JNCGu8PJAZ/XIkDldzLDz6TPVd8pA==",
+  "dgSpecHash": "wqf//6RErEDRvGQqUWbvPK1bEnacLUL5/AYp5N6zBlGrcKVNUCXb8UPjPUWGe10/IrCYZ53WHFNymEAKk9dupA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\MyRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\mailkit\\3.3.0\\mailkit.3.3.0.nupkg.sha512",

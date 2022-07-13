@@ -1,13 +1,11 @@
 ﻿using ByJoshgunFinalRestaurantProject.DAL;
 using ByJoshgunFinalRestaurantProject.Models;
-using ByJoshgunFinalRestaurantProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ByJoshgunFinalRestaurantProject.Controllers
@@ -22,12 +20,18 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             _db = db;
             _userManager = userManager;
         }
+
+
+        #region MyRegion
+
         public async Task<IActionResult> Index()
         {
 
             List<Expenditure> expenditureList = await _db.Expenditures.Include(x => x.AppUser).ToListAsync();
             return View(expenditureList);
         }
+
+        #endregion
 
 
         #region CreateExpenditure Xerc Yarat Metodu
@@ -59,6 +63,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
+        #region UpdateExpenditure 
 
         public async Task<IActionResult> UpdateExpenditure(int? expenditureId)
         {
@@ -99,9 +104,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
         }
 
+        #endregion
 
 
-
+        #region DetailExpenditure
 
         public async Task<IActionResult> DetailExpenditure(int? expenditureId)
         {
@@ -116,5 +122,12 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
             return View(dbExpenditure);
         }
+
+        #endregion
+
+
+
+
+
     }
 }

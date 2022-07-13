@@ -17,6 +17,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         {
             _db = db;
         }
+
+
+        #region Index
+
         public IActionResult Index()
         {
             DashboardVM dashboardVM = new()
@@ -40,6 +44,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         //    List<Menu> Menus = _db.Menus.OrderByDescending(x => x.Id).Skip(skip).Take(2).Include(m => m.Foods).ToList();
         //    return PartialView("_MenusPartial", Menus);
         //}
+
+        #endregion
+
+
 
     }
 }

@@ -7545,11 +7545,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\MyRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
       "projectName": "ByJoshgunFinalRestaurantProject",
-      "projectPath": "C:\\Users\\ASUS\\source\\repos\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
+      "projectPath": "C:\\Users\\ASUS\\source\\repos\\MyRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\source\\repos\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\source\\repos\\MyRestaurantProject\\ByJoshgunFinalRestaurantProject\\ByJoshgunFinalRestaurantProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",

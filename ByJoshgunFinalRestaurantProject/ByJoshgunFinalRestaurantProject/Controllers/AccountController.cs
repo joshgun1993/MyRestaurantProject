@@ -21,6 +21,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
+
+
+        #region CreateAdmin Admin Yarat
+
         public async Task<IActionResult> CreateAdmin()
         {
             AppUser user = await _userManager.FindByEmailAsync("SuperAdmin1234@gmail.com");
@@ -48,6 +52,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
 
         }
 
+        #endregion
+
+
+        #region Logout Çıxış
 
         public async Task<IActionResult> Logout()
         {
@@ -98,6 +106,11 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
 
         }
 
+        #endregion
+
+
+        #region CreateRoles Role Yarat
+
         public async Task CreateRoles()
         {
             if (!await _roleManager.RoleExistsAsync("SuperAdmin"))
@@ -110,8 +123,12 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
         }
 
+        #endregion
 
-        //#region ForgotPassword
+
+        #region ForgotPassword Comment Sətri Sonra lazım ola bilər
+
+
         //public IActionResult ForgotPassword()
         //{
 
@@ -150,6 +167,9 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         //    }
         //    return View(forgotPasswordVM);
         //}
-        //#endregion
+
+
+        #endregion
+
     }
 }

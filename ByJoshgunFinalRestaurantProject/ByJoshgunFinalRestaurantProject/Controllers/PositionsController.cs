@@ -17,11 +17,17 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         {
             _db = db;
         }
+
+        #region Index
+
         public IActionResult Index()
         {
             List<Position> positions = _db.Positions.ToList();
             return View(positions);
         }
+
+        #endregion
+
 
         #region CreatePosition Vəzifə Yarat
 

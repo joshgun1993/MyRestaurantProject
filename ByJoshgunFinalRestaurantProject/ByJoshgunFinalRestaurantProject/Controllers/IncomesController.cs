@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ByJoshgunFinalRestaurantProject.Controllers
@@ -21,12 +20,18 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             _db = db;
             _userManager = userManager;
         }
+
+        #region Index
+
         public async Task<IActionResult> Index()
         {
 
             List<Income> incomes = await _db.Incomes.Include(x => x.AppUser).ToListAsync();
             return View(incomes);
         }
+
+        #endregion
+
 
         #region CreateExpenditure Xerc Yarat Metodu
 
@@ -55,6 +60,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
+        #region UpdateIncome
 
         public async Task<IActionResult> UpdateIncome(int? incomeId)
         {
@@ -95,9 +101,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
         }
 
+        #endregion
 
 
-
+        #region DetailIncome
 
         public async Task<IActionResult> DetailIncome(int? incomeId)
         {
@@ -112,6 +119,12 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
             return View(dbIncome);
         }
+
+        #endregion
+
+
+
+
 
     }
 }

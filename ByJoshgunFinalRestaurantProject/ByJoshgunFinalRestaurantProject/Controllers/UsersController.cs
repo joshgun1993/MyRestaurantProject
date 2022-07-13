@@ -25,7 +25,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
-        #region View Users
+
+
+        #region Index
+
         public async Task<IActionResult> Index()
         {
             List<AppUser> users = await _userManager.Users.ToListAsync();
@@ -46,8 +49,11 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             }
             return View(userVMs);
         }
+
         #endregion
 
+
+        #region CreateUser
 
         public IActionResult CreateUser()
         {
@@ -98,6 +104,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             return RedirectToAction("Index");
         }
 
+        #endregion
 
 
         #region Change Role
@@ -180,48 +187,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-        //#region ResetPassword
-        //public IActionResult ResetPassword(string token, string email)
-        //{
-        //    if (token == null && email == null)
-        //    {
-        //        ModelState.AddModelError("", "Şifrə boş ola bilməz!");
-        //    }
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
-        //        if (user != null)
-        //        {
-        //            var result = await _userManager.ResetPasswordAsync(user, resetPasswordVM.Token, resetPasswordVM.Password);
-        //            if (result.Succeeded)
-        //            {
-        //                return View("ResetPasswordConfirmation");
-        //            }
-        //            foreach (var error in result.Errors)
-        //            {
-        //                ModelState.AddModelError("", error.Description);
-        //            }
-        //            return View(resetPasswordVM);
-        //        }
-        //        return View("ForgotPasswordConfirmation");
-        //    }
-        //    return View(resetPasswordVM);
-        //}
-        //#endregion
-
-
-
-
-
-
-
-        #region ResetPassword 2
+        #region ResetPassword 2 Bunu Yazmali
         public async Task<IActionResult> ResetPassword(string id)
         {
             if (id == null)
@@ -269,8 +235,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-
-
         #region ActivityAdmin
 
         public async Task<IActionResult> Activity(string id)
@@ -298,13 +262,15 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
+        #region UpdateUsernameAndEmail
+
         public async Task<IActionResult> UpdateUsernameAndEmail(string id)
         {
-            if (id == null) 
-            { 
-                return NotFound(); 
+            if (id == null)
+            {
+                return NotFound();
             }
-               
+
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
@@ -325,7 +291,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateUsernameAndEmail(string id, UpdateUserVM updateUserVM)
         {
-            
+
             if (id == null)
             {
                 return NotFound();
@@ -355,7 +321,47 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             return RedirectToAction("Index");
         }
 
+        #endregion
 
+
+        #region ResetPassword Comment Setridir Sadece
+
+        //#region ResetPassword
+        //public IActionResult ResetPassword(string token, string email)
+        //{
+        //    if (token == null && email == null)
+        //    {
+        //        ModelState.AddModelError("", "Şifrə boş ola bilməz!");
+        //    }
+        //    return View();
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await _userManager.FindByEmailAsync(resetPasswordVM.Email);
+        //        if (user != null)
+        //        {
+        //            var result = await _userManager.ResetPasswordAsync(user, resetPasswordVM.Token, resetPasswordVM.Password);
+        //            if (result.Succeeded)
+        //            {
+        //                return View("ResetPasswordConfirmation");
+        //            }
+        //            foreach (var error in result.Errors)
+        //            {
+        //                ModelState.AddModelError("", error.Description);
+        //            }
+        //            return View(resetPasswordVM);
+        //        }
+        //        return View("ForgotPasswordConfirmation");
+        //    }
+        //    return View(resetPasswordVM);
+        //}
+        //#endregion
+
+        #endregion
 
     }
 }

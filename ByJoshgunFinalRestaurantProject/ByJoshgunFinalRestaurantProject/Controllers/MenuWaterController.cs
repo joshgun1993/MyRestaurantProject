@@ -17,13 +17,16 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         {
             _db = db;
         }
+
+        #region Index
+
         public IActionResult Index()
         {
             List<MenuWater> menuWater = _db.MenuWaters.Include(m => m.Water).ToList();
             return View(menuWater);
         }
 
-
+        #endregion
 
 
         #region CreateMenuWater Menu Su Yarat Metodu
@@ -54,8 +57,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
-
 
 
         #region UpdateMenuWater Menu Su Yenilə Metodu
@@ -98,7 +99,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-
         #region CreateWater İçki Yarat Metodu
 
         public IActionResult CreateWater()
@@ -128,7 +128,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
 
 
         #region UpdateWater İçki Yenilə Metodu
@@ -172,7 +171,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-
         #region ActivityMenuKitchen Mətbəxi Aktiv Deaktiv Et Metodu
 
         public async Task<IActionResult> ActivityMenuWater(int? menuWaterId)
@@ -209,7 +207,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
 
 
         #region ActivityWater İçkini Aktiv Deaktiv Et Metodu

@@ -1,9 +1,7 @@
 ﻿using ByJoshgunFinalRestaurantProject.Helpers;
 using ByJoshgunFinalRestaurantProject.Models;
-using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
 using System;
 using System.Threading.Tasks;
 
@@ -12,6 +10,9 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
     [Authorize(Roles = "SuperAdmin, Admin")]
     public class EmailController : Controller
     {
+
+        #region Index
+
         public IActionResult Index()
         {
             return View();
@@ -38,6 +39,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             ViewBag.Msg = msg;
             return RedirectToAction("Index");
         }
+
+        #endregion
+
+
 
 
     }

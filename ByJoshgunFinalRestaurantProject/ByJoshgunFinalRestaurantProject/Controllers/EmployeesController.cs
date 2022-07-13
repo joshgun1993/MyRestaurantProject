@@ -24,11 +24,15 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             _db = db;
         }
 
+        #region Index
+
         public async Task<IActionResult> Index()
         {
             List<Employee> employees = await _db.Employees.Include(x => x.Position).ToListAsync();
             return View(employees);
         }
+
+        #endregion
 
 
         #region CreateEmployee Işçi Yarat Metodu
@@ -154,7 +158,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
 
 
         #region SendMail

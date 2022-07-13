@@ -17,6 +17,10 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         {
             _db = db;
         }
+
+
+        #region Index
+
         public IActionResult Index()
         {
             List<Menu> Menus = _db.Menus.Include(m => m.Foods).ToList();
@@ -24,7 +28,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
             return View(Menus);
         }
 
-
+        #endregion
 
 
         #region CreateKitchen Mətbəx Yarat Metodu
@@ -55,8 +59,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
-
 
 
         #region UpdateMenuKitchen Mətbəx Yenilə Metodu
@@ -99,7 +101,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-
         #region CreateFood Yemək Yarat Metodu
 
         public IActionResult CreateFood()
@@ -129,7 +130,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
 
 
         #region UpdateFood Yemək Yenilə Metodu
@@ -174,7 +174,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         #endregion
 
 
-
         #region ActivityMenuKitchen Mətbəxi Aktiv Deaktiv Et Metodu
 
         public async Task<IActionResult> ActivityMenuKitchen(int? menuId)
@@ -212,7 +211,6 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
         #endregion
-
 
 
         #region ActivityFood Yeməyi Aktiv Deaktiv Et Metodu
