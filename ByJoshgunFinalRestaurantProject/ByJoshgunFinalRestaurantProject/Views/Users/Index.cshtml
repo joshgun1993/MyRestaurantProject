@@ -72,7 +72,7 @@
                                     </td>
                                     <td>
                                         <a asp-action="UpdateUsernameAndEmail" asp-route-id="@userVM.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Yenilə</a>
-                                        @*<a asp-action="ResetPassword" asp-route-id="@userVM.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Şifrəni dəyiş</a>*@
+                                        <a asp-action="ResetPassword" asp-route-id="@userVM.Id" class="btn btn-outline-success" style="margin-right:10px; color:white !important">Şifrəni dəyiş</a>
                                         @if (User.Identity.Name != userVM.Username)
                                         {
                                             @*<a asp-action="ChangeRole" asp-route-id="@userVM.Id" class="btn btn-outline-info" style="margin-right:10px; color:white !important">Rolu dəyiş</a>*@

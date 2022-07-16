@@ -204,7 +204,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(ResetPasswordVM resetPasswordVM, string id)
+        public async Task<IActionResult> ResetPassword(string id, ResetPasswordVM resetPasswordVM)
         {
             if (id == null)
             {
