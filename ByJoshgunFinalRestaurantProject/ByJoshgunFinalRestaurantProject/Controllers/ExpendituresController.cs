@@ -22,7 +22,7 @@ namespace ByJoshgunFinalRestaurantProject.Controllers
         }
 
 
-        #region MyRegion
+        #region Index
 
         public async Task<IActionResult> Index()
         {
